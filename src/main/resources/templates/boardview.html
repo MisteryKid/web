@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 상세 페이지</title>
+    <link rel="stylesheet" href="/css/view.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/board/list}">게시판</a></li>
+            <li><a th:href="@{/board/write}">글쓰기</a></li>
+            <li><a th:href="@{/about}">소개</a></li>
+            <li><a th:href="@{/contact}">연락처</a></li>
+        </ul>
+    </nav>
+
+</header>
+<div class="layout">
+
+
+<h1 th:text="${board.title}">제목입니다.</h1>
+<p th:text="${board.content}">내용이 들어갈 부분입니다.</p>
+
+<a th:href="@{${board.filepath}}">다운받기</a>
+
+<a th:href="@{/board/delete(id=${board.id})}">글삭제</a>
+<a th:href="@{/board/modify/{id}(id=${board.id})}">수정</a>
+
+</div>
+<footer>
+    <p>&copy; 2024 간단한 글쓰기 블로그. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

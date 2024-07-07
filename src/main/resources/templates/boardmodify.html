@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시물 작성폼</title>
+    <link rel="stylesheet" href="/css/write.css">
+
+    <style>
+
+        .layout{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+        }
+        .layout input{
+        width : 100%;
+        box-sizing : border-box;
+        }
+
+        .layout textarea{
+            width : 100%;
+            margin-top : 10px;
+            min-height : 300px;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/board/list}">게시판</a></li>
+            <li><a th:href="@{/board/write}">글쓰기</a></li>
+            <li><a th:href="@{/about}">소개</a></li>
+            <li><a th:href="@{/contact}">연락처</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+
+<div class="layout">
+    <form th:action="@{/board/update/{id}(id = ${board.id})}" method="post" enctype="multipart/form-data">
+        <input name="title" type="text" th:value="${board.title}">
+        <textarea name="content" th:text="${board.content}"></textarea>
+        <input type="file" name="file">
+        <button type="submit">수정</button>
+
+    </form>
+
+
+</div>
+</body>
+</html>

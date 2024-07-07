@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시물 작성폼</title>
+    <link rel="stylesheet" href="/css/write.css">
+
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/board/list}">게시판</a></li>
+                <li><a th:href="@{/board/write}">글쓰기</a></li>
+                <li><a th:href="@{/about}">소개</a></li>
+                <li><a th:href="@{/contact}">연락처</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="layout">
+        <form action="/board/writepro" method="post" enctype="multipart/form-data">
+            <input name="title" type="text" class="input-field" value="제목을 작성해주세요" onfocus="clearText(this)" onblur="restoreText(this)">
+            <textarea name="content" class="input-field" onfocus="clearText(this)" onblur="restoreText(this)">내용을 작성해주세요</textarea>
+            <input type="file" name="file">
+            <button type="submit">작성</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 간단한 글쓰기 블로그. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function clearText(element) {
+            if (element.value === '제목을 작성해주세요' || element.value === '내용을 작성해주세요') {
+                element.value = '';
+                element.classList.remove('input-field');
+            }
+        }
+
+        function restoreText(element) {
+            if (element.value === '') {
+                if (element.name === 'title') {
+                    element.value = '제목을 작성해주세요';
+                } else if (element.name === 'content') {
+                    element.value = '내용을 작성해주세요';
+                }
+                element.classList.add('input-field');
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>
